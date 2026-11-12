@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InteriorDesignApp.Views.DesignOptionsPage"
+             Title="הדמיות AI לחלל"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- כותרת ראשית -->
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                <Label Text="שלב 3: חלופות העיצוב שלך" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalTextAlignment="Center" />
+                <Label Text="ה-AI יצר 3 הדמיות מותאמות אישית. בחרי את העיצוב שהכי אהבת:" 
+                       FontSize="14" 
+                       TextColor="#718096" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- כרטיסיות 3 ההדמיות -->
+            <CarouselView x:Name="DesignsCarousel" HeightRequest="380" Loop="False">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="10,5" Padding="0" CornerRadius="20" BorderColor="#E2E8F0" HasShadow="True" IsClippedToBounds="True">
+                            <Grid RowDefinitions="*, Auto">
+                                <!-- תמונת ההדמיה -->
+                                <Image Grid.Row="0" Source="{Binding ImageUrl}" Aspect="AspectFill" />
+
+                                <!-- פרטי ההדמיה בתחתית הכרטיסייה -->
+                                <VerticalStackLayout Grid.Row="1" Padding="15" BackgroundColor="White" Spacing="5">
+                                    <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" TextColor="#2D3748" />
+                                    <Label Text="{Binding Description}" FontSize="13" TextColor="#718096" />
+                                    <Label Text="{Binding EstimatedCost, StringFormat='תקציב מוערך: ₪{0}'}" 
+                                           FontSize="14" FontAttributes="Bold" TextColor="#5A67D8" Margin="0,5,0,0"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+
+            <!-- אינדיקטור נקודות למעבר בין 3 ההדמיות -->
+            <IndicatorView x:Name="IndicatorView" 
+                           HorizontalOptions="Center" 
+                           IndicatorColor="#CBD5E0" 
+                           SelectedIndicatorColor="#5A67D8" />
+
+            <!-- אזור צ'אט אינטראקטיבי לדייק את העיצוב -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="15" BorderColor="#E2E8F0" HasShadow="False">
+                <VerticalStackLayout Spacing="10">
+                    <Label Text="💬 רוצה לשנות משהו בקונספט?" FontSize="15" FontAttributes="Bold" TextColor="#2D3748" />
+
+                    <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+                        <Entry x:Name="ChatInput" 
+                               Placeholder="למשל: 'תחליף את השטיח לבהיר יותר'..." 
+                               FontSize="14" />
+                        <Button Grid.Column="1" 
+                                Text="שלח" 
+                                BackgroundColor="#5A67D8" 
+                                TextColor="White" 
+                                CornerRadius="10" 
+                                Clicked="OnSendChatClicked" />
+                    </Grid>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- כפתור אישור ובחירת העיצוב שמוביל לסל הקניות -->
+            <Button Text="🛒 בחר עיצוב זה ועבור לסל הקניות והמלאי" 
+                    BackgroundColor="#48BB78" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    CornerRadius="14" 
+                    HeightRequest="52"
+                    Clicked="OnSelectDesignClicked" 
+                    Margin="0,10,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

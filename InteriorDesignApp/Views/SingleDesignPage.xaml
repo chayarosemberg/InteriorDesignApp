@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InteriorDesignApp.Views.SingleDesignPage"
+             Title="הדמיית AI חכמה"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- כותרת ראשית -->
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                <Label Text="✨ עיבוד חכם מבוסס AI" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalTextAlignment="Center" />
+                <Label x:Name="StatusSubtitleLabel" Text="הבינה המלאכותית מנתחת את מבנה החדר שלך..." 
+                       FontSize="13" 
+                       TextColor="#718096" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- כרטיס ההדמיה המרכזי הענק -->
+            <Border Stroke="#E2E8F0" StrokeThickness="1" 
+                    BackgroundColor="White" 
+                    StrokeShape="RoundRectangle 20"
+                    HeightRequest="420"
+                    Padding="0">
+                <Grid>
+                    <!-- מצב א': מסך טעינה עם אחוזים (Generating...) -->
+                    <VerticalStackLayout x:Name="LoadingLayout" 
+                                         VerticalOptions="Center" 
+                                         HorizontalOptions="Center" 
+                                         Spacing="12">
+                        <ActivityIndicator IsRunning="True" 
+                                           Color="#5A67D8" 
+                                           WidthRequest="60" 
+                                           HeightRequest="60" />
+                        <Label x:Name="ProgressPercentLabel" 
+                               Text="מייצר הדמיה... 35%" 
+                               FontSize="16" 
+                               FontAttributes="Bold"
+                               TextColor="#2D3748" 
+                               HorizontalTextAlignment="Center" />
+                        <Label Text="Interior Redesign Processing" 
+                               FontSize="12" 
+                               TextColor="#A0AEC0" 
+                               HorizontalTextAlignment="Center" />
+                    </VerticalStackLayout>
+
+                    <!-- מצב ב': תמונת התוצאה הסופית המעוצבת -->
+                    <Image x:Name="GeneratedDesignImage" 
+                           Aspect="AspectFill" 
+                           IsVisible="False" />
+
+                    <!-- תגית צפה על הכרטיס -->
+                    <Frame VerticalOptions="Start" HorizontalOptions="Start" 
+                           Margin="15" Padding="8,4" 
+                           BackgroundColor="#1A202C" CornerRadius="8" HasShadow="False">
+                        <Label Text="Interior Redesign AI" TextColor="White" FontSize="11" FontAttributes="Bold" />
+                    </Frame>
+                </Grid>
+            </Border>
+
+            <!-- פרטי הקונספט הנבחר -->
+            <Border Stroke="#E2E8F0" StrokeThickness="1" 
+                    BackgroundColor="White" 
+                    StrokeShape="RoundRectangle 16"
+                    Padding="15">
+                <VerticalStackLayout Spacing="4">
+                    <Label x:Name="StyleTitleLabel" Text="קונספט עיצוב" FontSize="16" FontAttributes="Bold" TextColor="#2D3748" />
+                    <Label x:Name="ConceptDetailsLabel" Text="ההגדרות שלך ייטענו כאן." FontSize="13" TextColor="#718096" />
+                </VerticalStackLayout>
+            </Border>
+
+            <!-- כפתור מעבר לסל הקניות -->
+            <Button Text="🛒 צפה במוצרים שבחרנו עבורך ועבור לניווט לחנויות" 
+                    BackgroundColor="#48BB78" 
+                    TextColor="White" 
+                    FontSize="15" 
+                    FontAttributes="Bold" 
+                    CornerRadius="14" 
+                    HeightRequest="54"
+                    Clicked="OnGoToCartClicked" 
+                    Margin="0,10,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

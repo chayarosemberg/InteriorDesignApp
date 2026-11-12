@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InteriorDesignApp.Views.HomePage"
+             Title="AI Interior Design"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="25" VerticalOptions="Center">
+
+            <!-- כותרת ראשית מעוצבת -->
+            <VerticalStackLayout Spacing="8" HorizontalOptions="Center">
+                <Label Text="עיצוב פנים חכם מבוסס AI" 
+                       FontSize="26" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalTextAlignment="Center" />
+                <Label Text="צלמי את החדר שלך כדי להתחיל במסע העיצוב" 
+                       FontSize="15" 
+                       TextColor="#718096" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- מסגרת להצגת התמונה -->
+            <Frame HeightRequest="280" 
+                   CornerRadius="20" 
+                   BackgroundColor="#EDF2F7" 
+                   BorderColor="#CBD5E0" 
+                   HasShadow="False"
+                   Padding="0"
+                   IsClippedToBounds="True">
+                <Grid>
+                    <Image x:Name="SelectedImage" Aspect="AspectFill" />
+
+                    <VerticalStackLayout x:Name="PlaceholderLayout" VerticalOptions="Center" HorizontalOptions="Center" Spacing="5">
+                        <Label Text="📷 טרם נבחרה תמונה לחדר" 
+                               TextColor="#A0AEC0" 
+                               FontSize="16" 
+                               FontAttributes="Bold" 
+                               HorizontalTextAlignment="Center"/>
+                        <Label Text="בחרי תמונה מהגלריה או צלמי במצלמה" 
+                               TextColor="#CBD5E0" 
+                               FontSize="13" 
+                               HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </Grid>
+            </Frame>
+
+            <!-- כפתורי פעולה -->
+            <VerticalStackLayout Spacing="12">
+                <Button Text="📸 צלם את החדר במצלמה" 
+                        BackgroundColor="#5A67D8" 
+                        TextColor="White" 
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        CornerRadius="14" 
+                        HeightRequest="52"
+                        Clicked="OnTakePicClicked" />
+
+                <Button Text="🖼️ בחר תמונה מהגלריה" 
+                        BackgroundColor="White" 
+                        TextColor="#5A67D8" 
+                        BorderColor="#5A67D8"
+                        BorderWidth="1.5"
+                        FontSize="16" 
+                        FontAttributes="Bold" 
+                        CornerRadius="14" 
+                        HeightRequest="52"
+                        Clicked="OnPickPicClicked" />
+            </VerticalStackLayout>
+
+            <!-- כפתור המשך לשאלון (מוסתר עד בחירת תמונה) -->
+            <Button x:Name="ContinueButton"
+                    Text="✨ התמונה אומתה! המשך לשאלון האבחון ➔" 
+                    BackgroundColor="#48BB78" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    CornerRadius="14" 
+                    HeightRequest="52"
+                    IsVisible="False"
+                    Clicked="OnGoToDiagnosisClicked" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

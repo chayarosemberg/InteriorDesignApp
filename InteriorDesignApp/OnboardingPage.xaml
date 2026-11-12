@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InteriorDesignApp.OnboardingPage"
+             Title="OnboardingPage">
+
+    <VerticalStackLayout Spacing="20" Padding="30" VerticalOptions="Center">
+        <CarouselView x:Name="OnboardingCarousel" 
+                      PositionChanged="OnboardingCarousel_PositionChanged"
+                      HeightRequest="400">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <VerticalStackLayout Spacing="15" HorizontalOptions="Center">
+                        <Label Text="{Binding Title}" FontSize="22" FontAttributes="Bold" HorizontalTextAlignment="Center"/>
+                        <Label Text="{Binding Description}" FontSize="16" HorizontalTextAlignment="Center"/>
+                    </VerticalStackLayout>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <IndicatorView x:Name="SlideIndicator" HorizontalOptions="Center"/>
+
+        <Button x:Name="NextButton" 
+                Text="הבא" 
+                Clicked="OnNextClicked" 
+                BackgroundColor="Purple" 
+                TextColor="White"/>
+    </VerticalStackLayout>
+</ContentPage>

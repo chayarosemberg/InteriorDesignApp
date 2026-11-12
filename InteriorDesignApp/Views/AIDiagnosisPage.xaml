@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="InteriorDesignApp.Views.AIDiagnosisPage"
+             Title="שאלון אבחון AI חכם"
+             BackgroundColor="#F8F9FA">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="20">
+
+            <!-- כותרת ראשית -->
+            <VerticalStackLayout Spacing="6" HorizontalOptions="Center">
+                <Label Text="🎨 אפיון החלל שלך לבינה המלאכותית" 
+                       FontSize="22" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalTextAlignment="Center" />
+                <Label Text="הגדירי את הסגנון כדי שה-AI יעצב את החדר בדיוק לפי טעמך" 
+                       FontSize="13" 
+                       TextColor="#718096" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- שאלה 1: סוג החדר -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="1. איזה חדר אנחנו מעצבים?" FontSize="15" FontAttributes="Bold" TextColor="#2D3748" />
+                <Picker x:Name="RoomTypePicker" Title="בחר סוג חדר" FontSize="14" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>סלון (Living Room)</x:String>
+                        <x:String>חדר שינה (Bedroom)</x:String>
+                        <x:String>מטבח (Kitchen)</x:String>
+                        <x:String>פינת אוכל (Dining Room)</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- שאלה 2: סגנון העיצוב -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="2. מה סגנון העיצוב המועדף עליך?" FontSize="15" FontAttributes="Bold" TextColor="#2D3748" />
+                <Picker x:Name="StylePicker" Title="בחר סגנון עיצוב" FontSize="14" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>מודרני נקי ומינימליסטי (Modern Clean)</x:String>
+                        <x:String>סקנדינבי חם עם עץ טבעי (Scandinavian)</x:String>
+                        <x:String>תעשייתי אורבני (Industrial)</x:String>
+                        <x:String>בוהו-שיק עשיר (Boho Chic)</x:String>
+                        <x:String>יוקרה קלאסית (Luxury)</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- שאלה 3: פלטת צבעים -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="3. פלטת צבעים מובילה:" FontSize="15" FontAttributes="Bold" TextColor="#2D3748" />
+                <Picker x:Name="ColorPicker" Title="בחר פלטת צבעים" FontSize="14" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>גוונים קרים וניטרליים (אפור, לבן, שחור)</x:String>
+                        <x:String>גוונים חמים וטבעיים (שמנת, בז', עץ)</x:String>
+                        <x:String>צבעוניות נועזת ודרמטית (כחול כהה, ירוק יער)</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- שאלה 4: תקציב משוער -->
+            <VerticalStackLayout Spacing="8">
+                <Label Text="4. תקציב מוערך לפרויקט:" FontSize="15" FontAttributes="Bold" TextColor="#2D3748" />
+                <Picker x:Name="BudgetPicker" Title="בחר מסגרת תקציב" FontSize="14" BackgroundColor="White">
+                    <Picker.Items>
+                        <x:String>עד 5,000 ₪ (רענון קל וטקסטיל)</x:String>
+                        <x:String>5,000 ₪ - 15,000 ₪ (ריהוט מרכזי ותאורה)</x:String>
+                        <x:String>מעל 15,000 ₪ (עיצוב פרימיום מלא)</x:String>
+                    </Picker.Items>
+                </Picker>
+            </VerticalStackLayout>
+
+            <!-- כפתור יצירת הדמיה -->
+            <Button Text="✨ צור הדמיית AI חכמה לחדר שלי" 
+                    BackgroundColor="#5A67D8" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    CornerRadius="14" 
+                    HeightRequest="52"
+                    Clicked="OnGenerateClicked" 
+                    Margin="0,15,0,0" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:InteriorDesignApp.ViewModels"
+             x:Class="InteriorDesignApp.Views.CartPage"
+             Title="סל קניות וניווט חכם"
+             BackgroundColor="#F8F9FA">
+
+    <ContentPage.BindingContext>
+        <vm:CartViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView>
+        <VerticalStackLayout Padding="20" Spacing="20">
+
+            <!-- כותרת ראשית -->
+            <VerticalStackLayout Spacing="5" HorizontalOptions="Center">
+                <Label Text="🛒 סל הקניות והמלאי שלך" 
+                       FontSize="24" 
+                       FontAttributes="Bold" 
+                       TextColor="#2D3748" 
+                       HorizontalTextAlignment="Center" />
+                <Label Text="המוצרים שנבחרו מהעיצוב מוכנים עבורך בחנויות הקרובות" 
+                       FontSize="13" 
+                       TextColor="#718096" 
+                       HorizontalTextAlignment="Center" />
+            </VerticalStackLayout>
+
+            <!-- רשימת המוצרים בסל -->
+            <CollectionView ItemsSource="{Binding CartItems}" HeightRequest="380">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Frame Margin="0,6" Padding="15" CornerRadius="16" BackgroundColor="White" BorderColor="#E2E8F0" HasShadow="False">
+                            <Grid RowDefinitions="Auto, Auto, Auto" ColumnDefinitions="*, Auto" RowSpacing="4">
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding Name}" FontSize="16" FontAttributes="Bold" TextColor="#2D3748" />
+                                <Label Grid.Row="0" Grid.Column="1" Text="{Binding Price, StringFormat='₪{0}'}" FontSize="16" FontAttributes="Bold" TextColor="#5A67D8" HorizontalOptions="End" />
+
+                                <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text="{Binding StoreName, StringFormat='📍 חנות: {0}'}" FontSize="13" TextColor="#718096" />
+
+                                <HorizontalStackLayout Grid.Row="2" Grid.Column="0" Spacing="5" Margin="0,4,0,0">
+                                    <Label Text="✔ במלאי החנות" FontSize="12" TextColor="#38A169" FontAttributes="Bold" />
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+            <!-- סיכום מחיר כולל -->
+            <Frame BackgroundColor="White" CornerRadius="16" Padding="15" BorderColor="#E2E8F0" HasShadow="False">
+                <HorizontalStackLayout Spacing="10" HorizontalOptions="Center">
+                    <Label Text="סה&quot;כ לתשלום עבור כל הפריטים:" FontSize="16" FontAttributes="Bold" TextColor="#2D3748" />
+                    <Label Text="{Binding TotalPrice, StringFormat='₪{0}'}" FontSize="18" FontAttributes="Bold" TextColor="#5A67D8" />
+                </HorizontalStackLayout>
+            </Frame>
+
+            <!-- כפתור הפעלת ניווט GPS / Waze לחנויות -->
+            <Button Text="🚗 חשב מסלול אופטימלי ונווט לחנויות (Waze)" 
+                    Command="{Binding NavigateToStoresCommand}"
+                    BackgroundColor="#48BB78" 
+                    TextColor="White" 
+                    FontSize="16" 
+                    FontAttributes="Bold" 
+                    CornerRadius="14" 
+                    HeightRequest="52" />
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

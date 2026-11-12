@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="InteriorDesignApp/InteriorDesignApp.csproj">
+    <Deploy Solution="Debug|*" />
+  </Project>
+</Solution>
